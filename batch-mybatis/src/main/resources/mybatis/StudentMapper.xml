@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.batch_mybatis.mapper.StudentMapper">
+
+    <resultMap id="BaseResultMap" type="Student">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="first_name" property="firstName"/>
+        <result column="last_name" property="lastName"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <result column="score" property="score"/>
+        <result column="class_id" property="classId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, first_name, last_name, email, gender, score, class_id
+    </sql>
+
+    <insert id="addStudent" parameterType="Student" useGeneratedKeys="false">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+            SELECT nextval('students_id_seq') as id
+        </selectKey>
+        INSERT INTO students (id, first_name, last_name, email, gender, score, class_id)
+        VALUES (#{id}, #{firstName}, #{lastName}, #{email}, #{gender}, #{score}, #{classId})
+    </insert>
+
+    <select id="getStudents" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM STUDENTS
+    </select>
+
+    <select id="get5HighestStudents" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM STUDENTS ORDER BY score DESC
+        LIMIT 5;
+    </select>
+
+    <select id="get5LowestStudents" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM STUDENTS ORDER BY score ASC
+        LIMIT 5;
+    </select>
+
+    <select id="getClassStatistics" resultType="ClassStatistics">
+        SELECT
+            class_id AS classId,
+            COUNT(id) AS totalStudents,
+            ROUND(COUNT(id) * 100.0 / (SELECT COUNT(*) FROM students), 0) AS studentPercentage,
+            ROUND(AVG(score), 2) AS averageScore,
+            CASE
+                WHEN AVG(score) >= 8 THEN 'A'
+                WHEN AVG(score) >= 6.5 THEN 'B'
+                WHEN AVG(score) >= 5 THEN 'C'
+            ELSE 'D'
+            END AS scoreRanking
+        FROM
+            students
+        GROUP BY
+            classId
+    </select>
+
+</mapper>

@@ -1,0 +1,53 @@
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 20px 0;
+}
+
+ul.pagination li {
+    display: inline;
+    margin-right: 5px;
+}
+
+ul.pagination li a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid #ddd;
+}
+
+ul.pagination li a.active {
+    background-color: dodgerblue;
+    color: white;
+    border: 1px solid dodgerblue;
+}
+
+ul.pagination li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+ul.pagination li.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* CSS cho bảng danh sách */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}

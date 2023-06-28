@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Students</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<a th:href="@{/students}">Return to list students</a>
+<h1>Upload Students</h1>
+<form th:action="@{/students/save-batch}" method="post" class="student-edit-form" th:object="${studentWrapper}">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Score</th>
+            <th>Class ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student, studentStat : *{students}">
+            <td><label>
+                <input type="number" th:field="*{students[__${studentStat.index}__].id}"/>
+            </label></td>
+            <td><label>
+                <input type="text" th:field="*{students[__${studentStat.index}__].firstName}" />
+            </label></td>
+            <td><label>
+                <input type="text" th:field="*{students[__${studentStat.index}__].lastName}" />
+            </label></td>
+            <td><label>
+                <input type="email" th:field="*{students[__${studentStat.index}__].email}" />
+            </label></td>
+            <td>
+                <label>
+                    <select th:field="*{students[__${studentStat.index}__].gender}">
+                        <option value="MALE" th:selected="${student.gender == 'MALE'}">Male</option>
+                        <option value="FEMALE" th:selected="${student.gender == 'FEMALE'}">Female</option>
+                    </select>
+                </label>
+            </td>
+            <td><label>
+                <input type="number" th:field="*{students[__${studentStat.index}__].score}" />
+            </label></td>
+            <td><label>
+                <input type="text" th:field="*{students[__${studentStat.index}__].classId}" />
+            </label></td>
+        </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="Save All" />
+</form>
+</body>
+</html>

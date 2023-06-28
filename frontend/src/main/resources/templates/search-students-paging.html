@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+<a th:href="@{/students}">Return to list students</a>
+<form th:action="@{/students/search}" method="GET">
+    <label>
+        <input type="number" name="id" placeholder="Search by Id"/>
+    </label>
+    <label>
+        <input type="text" name="firstName" placeholder="Search by First Name"/>
+    </label>
+    <label>
+        <input type="text" name="lastName" placeholder="Search by Last Name"/>
+    </label>
+    <label>
+        <input type="text" name="email" placeholder="Search by Last Email"/>
+    </label>
+    <label>
+        <input type="text" name="gender" placeholder="Search by Last Gender"/>
+    </label>
+    <label>
+        <input type="number" name="score" placeholder="Search by Score"/>
+    </label>
+    <label>
+        <input type="text" name="classId" placeholder="Search by Class Id"/>
+    </label>
+    <button type="submit">Search</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th><a th:href="@{/students(sort=id, page=${currentPage})}">Id</a></th>
+        <th><a th:href="@{/students(sort=firstName, page=${currentPage})}">First Name</a></th>
+        <th><a th:href="@{/students(sort=lastName, page=${currentPage})}">Last Name</a></th>
+        <th><a th:href="@{/students(sort=email, page=${currentPage})}">Email</a></th>
+        <th><a th:href="@{/students(sort=gender, page=${currentPage})}">Gender</a></th>
+        <th><a th:href="@{/students(sort=score, page=${currentPage})}">Score</a></th>
+        <th><a th:href="@{/students(sort=classId, page=${currentPage})}">Class Id</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td><span th:text="${student.id}"> Id </span></td>
+        <td><span th:text="${student.firstName}"> First Name </span></td>
+        <td><span th:text="${student.lastName}"> Last Name </span></td>
+        <td><span th:text="${student.email}"> Email </span></td>
+        <td><span th:text="${student.gender}"> Gender </span></td>
+        <td><span th:text="${student.score}"> Score </span></td>
+        <td><span th:text="${student.classId}"> Class Id </span></td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <ul class="pagination">
+        <li th:class="${currentPage == 0 ? 'disabled' : ''}">
+            <a th:href="@{/students/search?page=0}">First</a>
+        </li>
+        <li th:class="${currentPage == 0 ? 'disabled' : ''}">
+            <a th:href="@{/students/search(page=${currentPage - 1})}">Previous</a>
+        </li>
+        <li th:each="pageNumber : ${#numbers.sequence(0, totalPages - 1)}"
+            th:class="${currentPage == pageNumber ? 'active' : ''}">
+            <a th:href="@{/students/search(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+        </li>
+        <li th:class="${currentPage == totalPages - 1 ? 'disabled' : ''}">
+            <a th:href="@{/students/search(page=${currentPage + 1})}">Next</a>
+        </li>
+        <li th:class="${currentPage == totalPages - 1 ? 'disabled' : ''}">
+            <a th:href="@{/students/search(page=${totalPages - 1})}">Last</a>
+        </li>
+    </ul>
+</div>
+
+
+</body>
+</html>

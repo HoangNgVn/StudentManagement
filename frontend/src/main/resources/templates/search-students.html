@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+<a th:href="@{/students}">Return to list students</a>
+<form th:action="@{/students/search}" method="GET">
+    <label>
+        <input type="number" name="id" placeholder="Search by Id"/>
+    </label>
+    <label>
+        <input type="text" name="firstName" placeholder="Search by First Name"/>
+    </label>
+    <label>
+        <input type="text" name="lastName" placeholder="Search by Last Name"/>
+    </label>
+    <label>
+        <input type="text" name="email" placeholder="Search by Last Email"/>
+    </label>
+    <label>
+        <input type="text" name="gender" placeholder="Search by Last Gender"/>
+    </label>
+    <label>
+        <input type="number" name="score" placeholder="Search by Score"/>
+    </label>
+    <label>
+        <input type="text" name="classId" placeholder="Search by Class Id"/>
+    </label>
+    <button type="submit">Search</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th><a th:href="@{/students(sort=id)}">Id</a></th>
+        <th><a th:href="@{/students(sort=firstName)}">First Name</a></th>
+        <th><a th:href="@{/students(sort=lastName}">Last Name</a></th>
+        <th><a th:href="@{/students(sort=email}">Email</a></th>
+        <th><a th:href="@{/students(sort=gender}">Gender</a></th>
+        <th><a th:href="@{/students(sort=score}">Score</a></th>
+        <th><a th:href="@{/students(sort=classId}">Class Id</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td><span th:text="${student.id}"> Id </span></td>
+        <td><span th:text="${student.firstName}"> First Name </span></td>
+        <td><span th:text="${student.lastName}"> Last Name </span></td>
+        <td><span th:text="${student.email}"> Email </span></td>
+        <td><span th:text="${student.gender}"> Gender </span></td>
+        <td><span th:text="${student.score}"> Score </span></td>
+        <td><span th:text="${student.classId}"> Class Id </span></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

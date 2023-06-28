@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.5.final using JasperReports Library version 6.20.5-3efcf2e67f959db3888d79f73dde2dbd7acb4f8e  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="classStatistics" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ccd762e4-412d-437b-be9e-a0dc2d8f794c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM POSITIONS]]>
+	</queryString>
+	<field name="classId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DOCUMENTID"/>
+		<property name="com.jaspersoft.studio.field.label" value="DOCUMENTID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="POSITIONS"/>
+	</field>
+	<field name="totalStudents" class="java.lang.Integer"/>
+	<field name="studentPercentage" class="java.lang.Double"/>
+	<field name="averageScore" class="java.lang.Double"/>
+	<field name="scoreRanking" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="05b956aa-d650-4568-842c-fdde75b77601"/>
+				<staticText>
+					<reportElement x="0" y="0" width="595" height="92" forecolor="#FFFFFF" uuid="cc18a735-7269-47e6-8497-e7e927e97ea7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Class Statistics]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="309b315b-2af0-4312-a7e1-270e532160d9"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="90" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0b1ce768-9b4a-4c97-811c-619b7623ed67">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9b292b0-83df-46b4-adbf-403afe34f2e8"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Class Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="90" y="0" width="120" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2c4d9872-86e3-4b10-8a08-a775956b6a95">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="feb44c03-dbf4-4485-99c3-32610464afd5"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Students]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="210" y="0" width="123" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="91ca06a4-fd34-445a-9bfd-fdf3bc6a4af5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8f188f3-532f-48ad-9a26-81b004471c13"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Percentage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="39fa68f4-e5d1-40b3-a7f6-236bdfe7c1ae">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc26d111-a4db-4b3b-9850-df6c208ef6ea"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Average Score]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0bef07b2-93bb-473d-990f-506937ae2a7e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9cedf0c8-6591-4cba-9a5f-fa859f095dc0"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Score Ranking]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="b3f8a423-6094-4eec-8462-0c91081038e8"/>
+			</line>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="0" y="0" width="90" height="20" uuid="ea4a7ed6-06d9-4052-b5a1-18262e17831a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9b292b0-83df-46b4-adbf-403afe34f2e8"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classId}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="90" y="0" width="120" height="20" uuid="1f662a75-f6d0-45dd-aec9-3bd9fdb9a9d5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="feb44c03-dbf4-4485-99c3-32610464afd5"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalStudents}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="210" y="0" width="123" height="20" uuid="7b589b69-bb35-4c3a-81ea-c3f38e2d72a9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e8f188f3-532f-48ad-9a26-81b004471c13"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentPercentage}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="333" y="0" width="111" height="20" uuid="84e1ade7-7f28-4a98-a6ea-591409cb0bab">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc26d111-a4db-4b3b-9850-df6c208ef6ea"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{averageScore}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="444" y="0" width="111" height="20" uuid="11ba20ff-a74b-41e4-82aa-ea6bd9d0b772">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9cedf0c8-6591-4cba-9a5f-fa859f095dc0"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{scoreRanking}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="ac25894e-4ef8-4a83-ab03-373fbd6310c9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="9ba99b37-65bd-469b-9de8-7617cc608415"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="cf10e365-2929-4cd6-be29-c16244599de5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
